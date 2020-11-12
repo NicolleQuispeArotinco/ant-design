@@ -113,3 +113,14 @@ export const Footer = styled.footer`
 export const Image = styled.img`
   margin: 25px 0;
 `
+
+export const TextErrorMessage = styled.p`
+  margin: 0;
+  padding: 0 0 20px 41px;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 10px;
+  line-height: 12px;
+  text-align: center;
+  color: #F51D2C;
+`

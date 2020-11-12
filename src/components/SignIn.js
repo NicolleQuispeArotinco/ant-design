@@ -1,8 +1,10 @@
-import React from "react";
-import { MainContainer, Main, Header, FieldContainer , FormTitle, FormField, Label, Button, ButtonContainer, BContainer, FormFieldContainer, ErrorMessageText, FormContainer, Footer, Image } from "../StyledComponents";
+import React, { useState } from "react";
+import { MainContainer, Main, Header, FieldContainer , FormTitle, FormField, Label, Button, ButtonContainer, BContainer, FormFieldContainer, ErrorMessageText, FormContainer, Footer, Image, TextErrorMessage } from "../StyledComponents";
 import logo from "../images/logo.svg";
 import { Formik, Form, ErrorMessage } from "formik";
 import * as yup from "yup";
+import { useSelector, useDispatch } from "react-redux";
+import { loadingStarted, loadingStopped } from "../app/statusSlice";
 
 const validations = yup.object({
   username: yup.string().required("Username is required"),
@@ -27,6 +29,19 @@ function FullField(props) {
   )
 }
 function SignIn() {
+  const [errorMessage, setErrorMessage] = useState("");
+  const loading = useSelector((state) => state.status.loading);
+  const dispatch = useDispatch();
+
+  const handleError = () => {
+    setTimeout(() => {
+      dispatch(loadingStarted());
+      setErrorMessage("*Your Username and/or password do not match");
+      dispatch(loadingStopped());
+    }, 1700);
+  }
+
+  console.log(errorMessage);
   return(
     <MainContainer>
       <Main>
@@ -41,14 +56,22 @@ function SignIn() {
               password: "",
             }}
             validationSchema={validations}
+            onSubmit= {(values) => {
+              setTimeout(() => {
+                dispatch(loadingStarted());
+                console.log(values);
+                dispatch(loadingStopped());
+              }, 2000);
+            }}
           >
             <Form>
               <FullField name="username" label="Username:" type="text" />
+              <TextErrorMessage>{errorMessage ? errorMessage: null}</TextErrorMessage>
               <FullField name="password" label="Password:" type="password" />
               <BContainer>
                 <ButtonContainer>
-                  <Button>Login Success</Button>
-                  <Button>Login Fail</Button>
+                  <Button type="submit">Login Success</Button>
+                  <Button onClick={handleError} type="button">Login Fail</Button>
                 </ButtonContainer>
               </BContainer>
             </Form>
