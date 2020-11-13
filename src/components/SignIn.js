@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { MainContainer, Main, Header, FieldContainer , FormTitle, FormField, Label, Button, ButtonContainer, BContainer, FormFieldContainer, ErrorMessageText, FormContainer, Footer, Image, TextErrorMessage } from "../StyledComponents";
-import logo from "../images/logo.svg";
+import logo from "../icons/logo.svg";
 import { Formik, Form, ErrorMessage } from "formik";
 import * as yup from "yup";
 import { useSelector, useDispatch } from "react-redux";
