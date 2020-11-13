@@ -1,5 +1,4 @@
 import styled from "@emotion/styled";
-import { Field } from "formik";
 
 export const Image = styled.img`
   position: relative;
@@ -35,6 +34,7 @@ export const SignOutButton = styled.button`
   font-weight: normal;
   font-size: 14px;
   padding: 10px 15px;
+  cursor: pointer;
 `
 export const Header = styled.header`
   display: flex;

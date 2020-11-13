@@ -2,8 +2,17 @@ import React from "react";
 import logo from "../icons/logoHome.svg";
 import circle from "../icons/logoHome2.svg";
 import { Image, LogoContainer, FormField, LogoSearchContainer, SignOutButton, Header, Footer, Main} from "../StyledComponentsHome";
+import { useHistory } from "react-router-dom";
 
 function Home () {
+  const history = useHistory();
+
+  const handleSignUp = () => {
+    setTimeout(() => {
+      history.push("/");
+    }, 1300);
+  }
+
   return(
     <Main>
       <Header>
@@ -14,7 +23,7 @@ function Home () {
           </LogoContainer>
           <FormField type="text" name="search" />
         </LogoSearchContainer>
-        <SignOutButton>Sign out</SignOutButton>
+        <SignOutButton onClick={handleSignUp}>Sign out</SignOutButton>
       </Header>
       <Footer>Made with ❤️ by Mentor4u Ximena </Footer>
     </Main>
