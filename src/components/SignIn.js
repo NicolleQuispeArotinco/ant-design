@@ -68,7 +68,6 @@ function SignIn() {
         </Header>
         <FormContainer>
           <LittleDiamond src={littleDiamond} alt="little diamond"/>
-          <FormTitle>Login</FormTitle>
           <Formik
             initialValues={{
               username: "",
@@ -86,6 +85,7 @@ function SignIn() {
             }}
           >
             <FormikForm>
+              <FormTitle>Login</FormTitle>
               <FullField name="username" label="Username:" type="text" />
               <TextErrorMessage>{errorMessage ? errorMessage: null}</TextErrorMessage>
               <FullField name="password" label="Password:" type="password" />
@@ -99,7 +99,7 @@ function SignIn() {
               </BContainer>
             </FormikForm>
           </Formik>
-          <BigDiamond src={bigDiamond} alt="Big diamond" />
+          <BigDiamond src={bigDiamond} alt="Big diamond"/>
         </FormContainer>
         <Square src={square} alt="square"/>
         <Footer>Made with ❤️ by Mentor4u Ximena</Footer>

@@ -17,8 +17,14 @@ export const Main = styled.div`
     "header ."
     ". form"
     ". footer";
-  grid-column-gap: 130px;
   height: 100%;
+  @media (max-width: 1200px) {
+    grid-template-columns: 1fr;
+    grid-template-areas: 
+    "header"
+    "form"
+    "footer";
+  }
 `
 
 export const Header = styled.header`
@@ -32,6 +38,15 @@ export const FormContainer = styled.div`
   grid-area: form;
   width: 50%;
   margin: 0 auto;
+  @media (max-width: 1200px) {
+    width: 50%;
+    margin: 60px auto;
+  }
+  @media (max-width: 768px) {
+    width: 50%;
+    margin: 60px auto;
+  }
+  
 `
 
 export const FormTitle = styled.h2`
@@ -44,6 +59,7 @@ export const FormTitle = styled.h2`
   text-align: center;
   position: relative;
   z-index: 1;
+  margin-top: 0;
 `
 
 export const FormField = styled(Field)`
@@ -99,7 +115,7 @@ export const ErrorMessageText = styled.p`
   font-weight: normal;
   font-size: 10px;
   line-height: 12px;
-  color: #F51D2C;
+  color: #c93e47;
 `
 
 export const Footer = styled.footer`
@@ -116,6 +132,10 @@ export const Footer = styled.footer`
 export const Image = styled.img`
   margin: 25px 0;
   position: relative;
+  @media (max-width: 768px) {
+    position: relative;
+    z-index: 1;
+  }
 `
 
 export const TextErrorMessage = styled.p`
@@ -133,6 +153,9 @@ export const LittleCircle = styled.img`
   position: absolute;
   top: 12px;
   left: 142px;
+  @media (max-width: 1024px) {
+    left: 124px;
+  }
 `
 
 export const BigCircle = styled.img`
@@ -144,12 +167,22 @@ export const BigCircle = styled.img`
 export const FormikForm = styled(Form)`
   position: relative;
   z-index: 1;
+  max-width: 350px;
 `
 
 export const BigDiamond = styled.img`
   position: absolute;
   top: 0;
-  right: 79px;
+  right: 136px;
+  @media (max-width: 1024px) and (min-width: 769px) {
+    right: 166px;
+  }
+
+  @media (max-width: 768px) {
+    right: 74px;
+    top: 71px;
+  }
+  
 `
 
 export const Square = styled.img`
