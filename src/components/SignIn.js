@@ -6,7 +6,7 @@ import bigCircle from "../icons/bigCircle.svg";
 import bigDiamond from "../icons/bigDiamond.svg";
 import square from "../icons/square.svg";
 import littleDiamond from "../icons/littleDiamond.svg";
-import { Formik, Form, ErrorMessage } from "formik";
+import { Formik, ErrorMessage } from "formik";
 import * as yup from "yup";
 import { useSelector, useDispatch } from "react-redux";
 import { loadingFailStopped, loadingFailStarted, loadingSuccessStopped, loadingSuccessStarted } from "../app/statusSlice";
