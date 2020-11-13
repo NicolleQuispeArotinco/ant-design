@@ -1,5 +1,5 @@
 import styled from "@emotion/styled";
-import { Field } from "formik";
+import { Field, Form} from "formik";
 
 export const MainContainer = styled.div`
   width: 100%;
@@ -42,6 +42,8 @@ export const FormTitle = styled.h2`
   line-height: 47px;
   color: #000000;
   text-align: center;
+  position: relative;
+  z-index: 1;
 `
 
 export const FormField = styled(Field)`
@@ -74,6 +76,7 @@ export const Button = styled.button`
   line-height: 22px;
   color: #FFFFFF;
   padding: 6px 12px;
+  cursor: pointer;
 `
 
 export const ButtonContainer = styled.div`
@@ -112,6 +115,7 @@ export const Footer = styled.footer`
 
 export const Image = styled.img`
   margin: 25px 0;
+  position: relative;
 `
 
 export const TextErrorMessage = styled.p`
@@ -123,4 +127,39 @@ export const TextErrorMessage = styled.p`
   line-height: 12px;
   text-align: center;
   color: #F51D2C;
+`
+
+export const LittleCircle = styled.img`
+  position: absolute;
+  top: 12px;
+  left: 142px;
+`
+
+export const BigCircle = styled.img`
+  position: absolute;
+  bottom: 0;
+  left: 0;
+`
+
+export const FormikForm = styled(Form)`
+  position: relative;
+  z-index: 1;
+`
+
+export const BigDiamond = styled.img`
+  position: absolute;
+  top: 0;
+  right: 79px;
+`
+
+export const Square = styled.img`
+  position: absolute;
+  right: 0;
+  bottom: 100px;
+`
+
+export const LittleDiamond = styled.img`
+  position: absolute;
+  top: 0;
+  right: 0;
 `

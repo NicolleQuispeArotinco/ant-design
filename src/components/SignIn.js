@@ -1,6 +1,11 @@
 import React, { useState } from "react";
-import { MainContainer, Main, Header, FieldContainer , FormTitle, FormField, Label, Button, ButtonContainer, BContainer, FormFieldContainer, ErrorMessageText, FormContainer, Footer, Image, TextErrorMessage } from "../StyledComponents";
+import { MainContainer, Main, Header, FieldContainer , FormTitle, FormField, Label, Button, ButtonContainer, BContainer, FormFieldContainer, ErrorMessageText, FormContainer, Footer, Image, TextErrorMessage, LittleCircle, BigCircle, FormikForm, BigDiamond, Square, LittleDiamond } from "../StyledComponents";
 import logo from "../icons/logo.svg";
+import littleCircle from "../icons/littleCircle.svg";
+import bigCircle from "../icons/bigCircle.svg";
+import bigDiamond from "../icons/bigDiamond.svg";
+import square from "../icons/square.svg";
+import littleDiamond from "../icons/littleDiamond.svg";
 import { Formik, Form, ErrorMessage } from "formik";
 import * as yup from "yup";
 import { useSelector, useDispatch } from "react-redux";
@@ -57,9 +62,12 @@ function SignIn() {
     <MainContainer>
       <Main>
         <Header>
+          <LittleCircle src={littleCircle} alt="little circle"/>
           <Image src={logo} alt="ant design"/>
+          <BigCircle src={bigCircle} alt="big circle"/>
         </Header>
         <FormContainer>
+          <LittleDiamond src={littleDiamond} alt="little diamond"/>
           <FormTitle>Login</FormTitle>
           <Formik
             initialValues={{
@@ -77,7 +85,7 @@ function SignIn() {
               
             }}
           >
-            <Form>
+            <FormikForm>
               <FullField name="username" label="Username:" type="text" />
               <TextErrorMessage>{errorMessage ? errorMessage: null}</TextErrorMessage>
               <FullField name="password" label="Password:" type="password" />
@@ -89,9 +97,11 @@ function SignIn() {
                   </Button>
                 </ButtonContainer>
               </BContainer>
-            </Form>
+            </FormikForm>
           </Formik>
+          <BigDiamond src={bigDiamond} alt="Big diamond" />
         </FormContainer>
+        <Square src={square} alt="square"/>
         <Footer>Made with ❤️ by Mentor4u Ximena</Footer>
       </Main>
     </MainContainer>

@@ -10,7 +10,7 @@ function Home () {
   const handleSignUp = () => {
     setTimeout(() => {
       history.push("/");
-    }, 1300);
+    }, 1700);
   }
 
   return(
