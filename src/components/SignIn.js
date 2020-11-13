@@ -4,11 +4,13 @@ import logo from "../icons/logo.svg";
 import { Formik, Form, ErrorMessage } from "formik";
 import * as yup from "yup";
 import { useSelector, useDispatch } from "react-redux";
-import { loadingStarted, loadingStopped } from "../app/statusSlice";
+import { loadingFailStopped, loadingFailStarted, loadingSuccessStopped, loadingSuccessStarted } from "../app/statusSlice";
+import { useHistory } from "react-router-dom";
+import '../App.css';
 
 const validations = yup.object({
   username: yup.string().required("Username is required"),
-  password: yup.string().min(3, "Password must have more than 2 characters").required("Password is required"),
+  password: yup.string().min(6, "Password must have more than 5 characters").required("Password is required"),
 });
 
 function FullField(props) {
@@ -28,17 +30,26 @@ function FullField(props) {
     </FieldContainer>
   )
 }
+
+function Spinner () {
+  return(
+    <div className="loader"></div>
+  )
+}
+
 function SignIn() {
   const [errorMessage, setErrorMessage] = useState("");
-  const loading = useSelector((state) => state.status.loading);
+  const loadingFail = useSelector((state) => state.status.loadingFail);
+  const loadingSuccess = useSelector((state) => state.status.loadingSuccess);
   const dispatch = useDispatch();
+  const history = useHistory();
 
   const handleError = () => {
+    dispatch(loadingFailStarted());
     setTimeout(() => {
-      dispatch(loadingStarted());
       setErrorMessage("*Your Username and/or password do not match");
-      dispatch(loadingStopped());
-    }, 1700);
+      dispatch(loadingFailStopped());
+    }, 1500);
   }
 
   console.log(errorMessage);
@@ -57,11 +68,13 @@ function SignIn() {
             }}
             validationSchema={validations}
             onSubmit= {(values) => {
+              dispatch(loadingSuccessStarted());
               setTimeout(() => {
-                dispatch(loadingStarted());
-                console.log(values);
-                dispatch(loadingStopped());
+                console.log("Redirect to Home Page");
+                dispatch(loadingSuccessStopped());
+                history.push("/home");
               }, 2000);
+              
             }}
           >
             <Form>
@@ -70,8 +83,10 @@ function SignIn() {
               <FullField name="password" label="Password:" type="password" />
               <BContainer>
                 <ButtonContainer>
-                  <Button type="submit">Login Success</Button>
-                  <Button onClick={handleError} type="button">Login Fail</Button>
+                  <Button type="submit">{loadingSuccess ? <Spinner/> : "Login Success" }</Button>
+                  <Button onClick={handleError} type="button">
+                    {loadingFail ? <Spinner/> : "Login Fail" }
+                  </Button>
                 </ButtonContainer>
               </BContainer>
             </Form>

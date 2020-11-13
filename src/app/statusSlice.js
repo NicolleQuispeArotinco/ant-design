@@ -3,18 +3,25 @@ import { createSlice } from "@reduxjs/toolkit";
 export const statusSlice = createSlice({
   name: "status",
   initialState: {
-    loading: false,
+    loadingFail: false,
+    loadingSuccess: false,
   },
   reducers: {
-    loadingStopped: (state) => {
-      state.loading = false;
+    loadingFailStopped: (state) => {
+      state.loadingFail = false;
     },
-    loadingStarted: (state) => {
-      state.loading = true;
+    loadingFailStarted: (state) => {
+      state.loadingFail = true;
+    },
+    loadingSuccessStopped: (state) => {
+      state.loadingSuccess = false;
+    },
+    loadingSuccessStarted: (state) => {
+      state.loadingSuccess = true;
     },
   },
 });
 
-export const { loadingStopped, loadingStarted } = statusSlice.actions;
+export const { loadingFailStopped, loadingFailStarted, loadingSuccessStopped, loadingSuccessStarted } = statusSlice.actions;
 
 export default statusSlice.reducer;
